@@ -1,0 +1,23 @@
+{
+  "name": "crosspomodoro",
+  "version": "0.0.1",
+  "description": "cross machine pomodoro built with nodeJs and scokets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vovkvlad/crossPomodoro.git"
+  },
+  "author": "Vovk Vladyslav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vovkvlad/crossPomodoro/issues"
+  },
+  "homepage": "https://github.com/vovkvlad/crossPomodoro#readme",
+  "dependencies": {
+    "express": "^4.13.1",
+    "socket.io": "^1.3.6"
+  }
+}
