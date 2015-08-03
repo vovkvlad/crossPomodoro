@@ -20,14 +20,19 @@ var pomodoroShema = new Schema({
         required: true
     },
 
-    isBreake: {
+    isShortBreak: {
         type: Boolean,
         default: false
     },
 
-    isLongBreake: {
+    isLongBreak: {
         type: Boolean,
         default: false
+    },
+
+    isFullCycle: {
+        type: Boolean,
+        default: true
     }
 });
 
