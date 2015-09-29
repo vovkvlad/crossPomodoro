@@ -17,4 +17,3 @@ app.get('/', function (req, res) {
 http.listen(3030, function () {
     console.log('server started successfully on port 3030');
 });
-
