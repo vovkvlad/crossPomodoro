@@ -4,7 +4,7 @@ function InitSockets (http) {
     io.on ('connection', function (socket) {
         console.log('io connected');
         //put here all modules that handles different socket logic
-        require ('authentication') (socket);
+        require ('./authentication') (socket);
 
     });
 }
