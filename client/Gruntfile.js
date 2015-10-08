@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         jshint: {
-            files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+            files: ['Gruntfile.js', 'src/scripts/**/*.js'],
             options: {
                 globals: {
                     jQuery: true
@@ -10,8 +10,18 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: ['<%= jshint.files %>'],
-            tasks: ['jshint']
+            js: {
+                files: ['src/scripts/**/*'],
+                tasks: ['clean:js', 'concat:all']
+            },
+            sass: {
+                files: ['src/resources/**/*'],
+                tasks: ['clean:resources', 'sass:debug']
+            },
+            vendor: {
+                files: ['src/vendor/**/*'],
+                tasks: ['clean:vendor', 'copy:all']
+            }
         },
         clean: {
             all: ['dist/**/*'],
@@ -25,6 +35,35 @@ module.exports = function(grunt) {
                     {expand: true, cwd: 'src', src: 'vendor/**/*', dest: 'dist'}
                 ]
             }
+        },
+        concat: {
+            options: {
+                process: function (src, filepath) {
+                    return '//####' + filepath + '\n' + src +'\n';
+                }
+            },
+            all: {
+                files: [
+                    {
+                        src:['src/scripts/**/*.module.js', 'src/scripts/**/*.module.config.js', 'src/scripts/**/*'],
+                        dest: 'dist/scripts/app.js'
+                    }
+                ]
+            }
+        },
+        sass: {
+            debug: {
+                options: {
+                    style: 'expanded',
+                    update: true
+                },
+                files: [
+                    {
+                        src: 'src/resources/sass/all.scss',
+                        dest: 'dist/resorces/css/app.css'
+                    }
+                ]
+            }
         }
     });
 
@@ -36,6 +75,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-clean');
 
-    grunt.registerTask('debug', ['copy:all']);
+    grunt.registerTask('globalWatch', ['watch:js', 'watch:sass', 'watch:vendor']);
+
+    grunt.registerTask('debug', ['clean:all', 'concat:all', 'copy:all', 'sass:debug', 'globalWatch']);
 
 };
