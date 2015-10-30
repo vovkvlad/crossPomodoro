@@ -1,5 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('cpm', ['ui.router']);
+    angular.module('cpm',
+        [
+            'ui.router',
+            'cpm.utils'
+        ]);
 })();
