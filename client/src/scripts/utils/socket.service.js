@@ -1,15 +1,15 @@
 (function () {
     'use strict';
 
-    angular.module('cpm.utils').factory ('cpmSocket', function ($rootScope, $q) {
-        var socket = io.connect ();
+    angular.module('cpm.utils').factory('cpmSocket', function ($rootScope, $q) {
+        var socket = io.connect();
 
         return {
             on: function (eventName, callback) {
-                socket.on (eventName, function () {
+                socket.on(eventName, function () {
                     var args = arguments;
-                    $rootScope.$apply (function () {
-                        callback.apply (socket, args);
+                    $rootScope.$apply(function () {
+                        callback.apply(socket, args);
                     });
                 });
             },
