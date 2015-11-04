@@ -74,9 +74,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-clean');
-
-    grunt.registerTask('globalWatch', ['watch:js', 'watch:sass', 'watch:vendor']);
-
-    grunt.registerTask('debug', ['clean:all', 'concat:all', 'copy:all', 'sass:debug', 'globalWatch']);
+    
+    grunt.registerTask('debug', ['clean:all', 'concat:all', 'copy:all', 'sass:debug', 'watch']);
 
 };
