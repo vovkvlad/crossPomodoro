@@ -21,19 +21,29 @@ module.exports = function(grunt) {
             vendor: {
                 files: ['src/vendor/**/*'],
                 tasks: ['clean:vendor', 'copy:all']
+            },
+            html: {
+                files: ['src/index.html'],
+                tasks: ['clean:html', 'copy:mainHtml']
             }
         },
         clean: {
             all: ['dist/**/*'],
             js: ['dist/scripts'],
             resources: ['dist/resources'],
-            vendor: ['dist/vendor']//might not use it
+            vendor: ['dist/vendor'],//might not use it
+            html: ['dist/index.html']
         },
         copy: {
             all: {
                 files: [
                     {expand: true, cwd: 'src', src: 'index.html', dest: 'dist'},
                     {expand: true, cwd: 'src', src: ['vendor/**/*', '!vendor/bootstrap-sass-3.3.5', '!vendor/bootstrap-sass-3.3.5/**/*'], dest: 'dist'}
+                ]
+            },
+            mainHtml: {
+                files: [
+                    {expand: true, cwd: 'src', src: 'index.html', dest: 'dist'}
                 ]
             }
         },
@@ -46,7 +56,7 @@ module.exports = function(grunt) {
             all: {
                 files: [
                     {
-                        src:['src/scripts/**/*.module.js', 'src/scripts/**/*.module.config.js', 'src/scripts/**/*'],
+                        src:['src/scripts/**/*.module.js', 'src/scripts/**/*.module.config.js', 'src/scripts/**/*', '!src/scripts/**/*.html'],
                         dest: 'dist/scripts/app.js'
                     }
                 ]
@@ -62,7 +72,7 @@ module.exports = function(grunt) {
                 files: [
                     {
                         src: 'src/resources/sass/all.scss',
-                        dest: 'dist/resorces/css/app.css'
+                        dest: 'dist/resources/css/app.css'
                     }
                 ]
             }
@@ -76,6 +86,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-angular-templates');
 
     grunt.registerTask('debug', ['clean:all', 'concat:all', 'copy:all', 'sass:debug', 'watch']);
 
