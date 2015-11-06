@@ -32,7 +32,8 @@ module.exports = function(grunt) {
         copy: {
             all: {
                 files: [
-                    {expand: true, cwd: 'src', src: 'vendor/**/*', dest: 'dist'}
+                    {expand: true, cwd: 'src', src: 'index.html', dest: 'dist'},
+                    {expand: true, cwd: 'src', src: ['vendor/**/*', '!vendor/bootstrap-sass-3.3.5', '!vendor/bootstrap-sass-3.3.5/**/*'], dest: 'dist'}
                 ]
             }
         },
@@ -55,7 +56,8 @@ module.exports = function(grunt) {
             debug: {
                 options: {
                     style: 'expanded',
-                    update: true
+                    //update: true,
+                    lineNumbers: true
                 },
                 files: [
                     {
@@ -74,7 +76,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    
+
     grunt.registerTask('debug', ['clean:all', 'concat:all', 'copy:all', 'sass:debug', 'watch']);
 
 };
