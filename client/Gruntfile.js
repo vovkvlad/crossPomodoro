@@ -12,7 +12,7 @@ module.exports = function(grunt) {
         watch: {
             js: {
                 files: ['src/scripts/**/*'],
-                tasks: ['clean:js', 'concat:all']
+                tasks: ['clean:js', 'concat:all', 'ngtemplates']
             },
             sass: {
                 files: ['src/resources/**/*'],
@@ -76,6 +76,15 @@ module.exports = function(grunt) {
                     }
                 ]
             }
+        },
+        ngtemplates: {
+            cpm: {
+                src: 'src/scripts/**/*.html',
+                dest: 'dist/scripts/app.js',
+                options: {
+                    append: true
+                }
+            }
         }
     });
 
@@ -88,6 +97,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-angular-templates');
 
-    grunt.registerTask('debug', ['clean:all', 'concat:all', 'copy:all', 'sass:debug', 'watch']);
-
+    grunt.registerTask('debug', ['clean:all', 'concat:all', 'ngtemplates', 'copy:all', 'sass:debug', 'watch']);
 };

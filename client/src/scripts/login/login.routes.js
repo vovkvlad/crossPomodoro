@@ -3,8 +3,8 @@
 
     angular.module('cpm.login').config(function ($stateProvider) {
         $stateProvider.state('login', {
-            url: 'login',
-            templateUrl: 'scripts/login/login.view.html',
+            url: '/login',
+            templateUrl: 'src/scripts/login/login.view.html',
             controller: 'LoginController'
         })
     });

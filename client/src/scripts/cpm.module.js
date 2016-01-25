@@ -4,6 +4,7 @@
     angular.module('cpm', [
         'ui.router',
         'cpm.utils',
-        'cpm.login'
+        'cpm.login',
+        'cpm.timer'
     ]);
 })();

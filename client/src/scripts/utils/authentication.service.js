@@ -10,7 +10,7 @@
     angular.module('cpm.utils').factory('cpmAuthentication', function (cpmSocket, cpmLocalStorage) {
         var _user = null;
 
-        _getUser = function () {
+         var _getUser = function () {
             var storedUser = cpmLocalStorage.get('userToken');
 
             if(storedUser) {
@@ -22,7 +22,7 @@
             return _user;
         };
 
-        _loginUser = function (credentials) {
+        var _loginUser = function (credentials) {
             //TODO here should be some encryption logic
 
             return cpmSocket.emit ('login', credentials).then (
