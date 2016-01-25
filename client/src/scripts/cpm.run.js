@@ -6,8 +6,10 @@
             //should work as for now, later logic with sessions should be implemented
             if (toState.name != 'login') {
                 if(cpmAuthentication.getUser()) {
+                    event.preventDefault();
                     $state.go(toState.name, toParams);
                 } else {
+                    event.preventDefault();
                     $state.go('login', toParams);
                 }
             }
