@@ -6,5 +6,10 @@
             username: '',
             password: ''
         };
+        $scope.submit = function () {
+            cpmSocket.emit('login').then(function (data) {
+                console.log('data received from the server:' + data);
+            });
+        }
     });
 })();
