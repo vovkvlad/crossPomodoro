@@ -98,4 +98,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-angular-templates');
 
     grunt.registerTask('debug', ['clean:all', 'concat:all', 'ngtemplates', 'copy:all', 'sass:debug', 'watch']);
+    grunt.registerTask('default', ['debug']);
 };
