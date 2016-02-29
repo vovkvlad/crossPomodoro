@@ -5,7 +5,7 @@
         return {
             set: function (key, value) {
                 //TODO Here some checks are supposed to be
-                localStorage.set(key, JSON.stringify(value));
+                localStorage.setItem(key, JSON.stringify(value));
             },
             get: function(key) {
                 var data = localStorage.getItem(key);

@@ -7,7 +7,7 @@
      get/set user tokens, which came from the server, to localStorage
      (in order not to enter login&passwd every time
      */
-    angular.module('cpm.utils').factory('cpmAuthentication', function (cpmSocket, cpmLocalStorage) {
+    angular.module('cpm.utils').factory('cpmAuthentication', function (cpmSocket, cpmLocalStorage, $q) {
         var _user = null;
 
          var _getUser = function () {
@@ -24,15 +24,19 @@
 
         var _loginUser = function (credentials) {
             //TODO here should be some encryption logic
+            var defer = $q.defer();
 
-            return cpmSocket.emit ('login', credentials).then (
+            cpmSocket.emit('login', credentials).then(
                 function (successToken) {
-                    cpmLocalStorage.set ('userToken', successToken);
-                    return _getUser();
+                    cpmLocalStorage.set('userToken', successToken);
+                    defer.resolve(_getUser());
                 },
                 function (error) {
+                    defer.reject(error.message);
                     //TODO handle error
                 });
+
+            return defer.promise;
         };
 
         return {
