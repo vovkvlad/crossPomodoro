@@ -8,14 +8,10 @@
         };
         $scope.submit = function () {
             cpmAuthentication.loginUser($scope.credentials).then(function (data) {
-                $state.go('timer');
+                $state.go('main.timer');
             }, function (error) {
                 console.log(error);
             });
-
-            //cpmSocket.emit('login', $scope.credentials).then(function (data) {
-            //    console.log('data received from the server:' + data);
-            //});
         }
     });
 })();

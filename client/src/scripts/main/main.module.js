@@ -1,10 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('cpm', [
+    angular.module('cpm.main', [
         'ui.router',
         'cpm.utils',
-        'cpm.login',
-        'cpm.main'
+        'cpm.main.timer'
     ]);
 })();

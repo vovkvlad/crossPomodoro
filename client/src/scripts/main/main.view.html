@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-sm-2 main-navigation">
+            <ul>
+                <li>
+                    <a ui-sref="main.timer" ui-sref-active="activated-nav">Timer</a>
+                </li>
+                <li>
+                    <a ui-sref="main.statistics" ui-sref-active="activated-nav">Statistics</a>
+                </li>
+                <li>
+                    <a  ui-sref="main.profile" ui-sref-active="activated-nav">Profile</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="col-sm-10 main-content" ui-view></div>
+    </div>
+</div>

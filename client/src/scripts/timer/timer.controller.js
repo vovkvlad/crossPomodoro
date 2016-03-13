@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('cpm.timer').controller('TimerController', function ($scope, cpmAuthentication, cpmSocket) {
+    angular.module('cpm.main.timer').controller('TimerController', function ($scope, cpmSocket) {
 
     });
 })();

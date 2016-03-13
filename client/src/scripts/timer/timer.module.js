@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('cpm.timer', [
+    angular.module('cpm.main.timer', [
         'ui.router',
         'cpm.utils'
     ]);
